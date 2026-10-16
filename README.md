@@ -83,6 +83,10 @@ node ~/.claude/jev/jev-vision.mjs box    device.jpg "the product label"
 
 Re-running the installer is safe. Files that changed are backed up as `.bak-<time>`, and nothing is deleted.
 
+**nvm and other per-shell Node installs**: on macOS, Linux and WSL, the hooks and `/jev` call Node by the absolute path of the `node` that ran the installer. Claude Code runs them in a non-interactive shell that never loads nvm, so a bare `node` would fail with `node: command not found`. If you later switch Node versions (for example `nvm use 22`), re-run `node ~/.claude/jev/install.mjs` with the new Node. It updates the paths in place. Windows keeps using `node` from PATH.
+
+非 Windows 平台的 hooks 與 `/jev` 用安裝時那個 node 的絕對路徑（nvm 只在互動 shell 載入，Claude Code 的 hook 找不到）；之後換 node 版本請用新的 node 重跑 `node ~/.claude/jev/install.mjs`。
+
 **Uninstall**: run `/jev off`, then remove the four `jev.mjs hook …` entries from `~/.claude/settings.json` (a backup from install time sits next to it) and delete the files above.
 
 If `~/.claude/jev/jev.py` exists (another Jev implementation), the installer refuses to run so that hooks are not duplicated.

@@ -10,7 +10,7 @@ You are installing **Jev for Claude Code** (hooks plus the jev-vision Images/Box
 
 ## Steps
 
-1. **Check Node.js 18 or newer.** Run `node --version`. If it is missing or older, stop and ask the user to install Node.js 18+ first.
+1. **Check Node.js 18 or newer.** Run `node --version`. If it is missing or older, stop and ask the user to install Node.js 18+ first. On macOS / Linux / WSL, run the installer with this same `node`: the installer writes its absolute path into the hooks and `/jev`, because Claude Code runs them in a non-interactive shell where nvm-style installs are not on PATH.
 
 2. **Check for another Jev implementation.** If `~/.claude/jev/jev.py` exists, stop. This machine already runs a different Jev, and installing this one would duplicate hooks.
 
@@ -33,4 +33,5 @@ You are installing **Jev for Claude Code** (hooks plus the jev-vision Images/Box
 
 6. **Finish.** Tell the user to **restart Claude Code** so it loads the hooks and the `jev-vision` skill. Also tell them:
    - `/jev status`, `/jev lite`, `/jev on` and `/jev off` control Jev.
+   - On macOS / Linux / WSL: after switching Node versions (for example with nvm), re-run `node ~/.claude/jev/install.mjs` so the hooks point at the new Node.
    - jev-vision (Images + Box) is **experimental**, and the images it analyzes are **uploaded to TypeSafe**.
