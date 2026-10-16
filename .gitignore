@@ -1,0 +1,5 @@
+api_key
+*.key
+.env
+*.bak-*
+node_modules/

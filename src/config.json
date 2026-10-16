@@ -1,0 +1,48 @@
+{
+  "model": "jev-latest",
+  "features": {
+    "skills": true,
+    "taskType": true,
+    "agentModel": true,
+    "shellRisk": true
+  },
+  "skills": {
+    "gate": 0.3,
+    "fits": 0.3,
+    "shortlist": 3,
+    "excerptChars": 700,
+    "descriptionChars": 240,
+    "minPromptChars": 4
+  },
+  "taskType": {
+    "minConfidence": 0.6
+  },
+  "agentModel": {
+    "minConfidence": 0.6
+  },
+  "shellRisk": {
+    "ask": 0.9,
+    "askOn": [
+      "destructive",
+      "secrets"
+    ],
+    "exempt": [
+      "AppData[\\\\/]Local[\\\\/]Temp[\\\\/]claude[\\\\/]"
+    ],
+    "neverExempt": [
+      "\\brm\\s+-[a-zA-Z]*[rf]",
+      "Remove-Item",
+      "git\\s+push",
+      "--force",
+      "reset\\s+--hard",
+      "wrangler\\s+(deploy|secret|delete)",
+      "--env\\s+production",
+      "DROP\\s+TABLE",
+      "DELETE\\s+FROM"
+    ]
+  },
+  "timeoutMs": {
+    "prompt": 12000,
+    "tool": 6000
+  }
+}
